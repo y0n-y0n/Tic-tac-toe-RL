@@ -6,7 +6,7 @@ class Game:
     def __init__(self):
         self.agent: Agent
         self.env: Environment
-        self.num_episodes = 100000
+        self.num_episodes = 1000000
         self.report_every = 10000
         self.wins = 0
         self.losses = 0
@@ -47,6 +47,7 @@ class Game:
         for episode in range(1, self.num_episodes + 1):
             result = self.play_episode()
             results.append(result)
+            self.agent.decay_epsilon()
             if episode % self.report_every == 0:
                 self.record_results(results)
                 self.total_wins += self.wins

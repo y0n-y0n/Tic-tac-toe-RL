@@ -1,0 +1,147 @@
+/* claude: whole file */
+
+/* ---------- Colors and sizes ---------- */
+:root {
+    --button-blue: #4a86e8;
+    --button-blue-hover: #3b73d1;
+    --button-border: #555;
+    --board-border: #5a5a5a;
+    --cell-bg: #eeeeee;
+    --cell-hover: #e2e2e2;
+    --win-bg: #fff2a8;
+    --x-red: #ff0000;
+    --o-blue: #4a86e8;
+    --text: #000;
+    --status-text: #555;
+    --cell-size: min(140px, 28vw);
+}
+
+/* ---------- Page ---------- */
+body {
+    margin: 0;
+    padding: 24px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: #fff;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 2.6rem;
+    margin: 0 0 32px;
+}
+
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px 96px;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 260px;
+    min-height: 100px;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid var(--button-border);
+    border-radius: 14px;
+    background: var(--button-blue);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.control:hover {
+    background: var(--button-blue-hover);
+}
+
+.control:focus-visible,
+.control select:focus-visible,
+.cell:focus-visible {
+    outline: 3px solid #1a1a1a;
+    outline-offset: 2px;
+}
+
+.control-value {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.control select {
+    font: inherit;
+    font-size: 1rem;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--button-border);
+    cursor: pointer;
+}
+
+/* ---------- Board ---------- */
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, var(--cell-size));
+    grid-template-rows: repeat(3, var(--cell-size));
+    border: 4px solid var(--board-border);
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--board-border);
+    background: var(--cell-bg);
+    cursor: pointer;
+}
+
+.cell:hover:not(:disabled) {
+    background: var(--cell-hover);
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+.cell.win {
+    background: var(--win-bg);
+}
+
+.cell svg {
+    width: 50%;
+    height: 50%;
+}
+
+/* ---------- Status bar ---------- */
+.status {
+    min-height: 1.5em;
+    margin: 28px 0 0;
+    font-size: 1.8rem;
+    color: var(--status-text);
+    text-align: center;
+}
+
+.status.error {
+    color: #c00000;
+    font-size: 1.2rem;
+}

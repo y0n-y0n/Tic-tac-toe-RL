@@ -1,5 +1,6 @@
 from Game import Game
 game = Game()
 game.train()
-print(game.report_results())
-print(f"Different states seen: {len(game.seen_states)}")
+# claude
+game.agent.save_q_table("q_table.pkl")
+print(f"Saved Q-table with {len(game.agent.q_table)} entries to q_table.pkl")

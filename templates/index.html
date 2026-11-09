@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- claude: whole file -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Tic tac toe</h1>
+
+    <main class="layout">
+        <!-- Controls column -->
+        <section class="controls">
+            <button id="new-game" class="control">New game</button>
+
+            <button id="who-starts" class="control">
+                Who starts
+                <span id="who-starts-value" class="control-value">You start</span>
+            </button>
+
+            <label class="control" for="agent-select">
+                Choose agent
+                <select id="agent-select">
+                    <option value="qtable">Q-learning</option>
+                </select>
+            </label>
+        </section>
+
+        <!-- Board and status -->
+        <section class="game">
+            <div id="board" class="board" role="grid" aria-label="Tic tac toe board">
+                <!-- 9 cells are created by app.js -->
+            </div>
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
